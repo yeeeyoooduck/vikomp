@@ -1,5 +1,5 @@
 html {
-  font-size: clamp(14px, 1.25vw, 24px);
+  font-size: clamp(16px, 1.25vw, 24px);
   background-color: #353131;
   color: #353131;
   overflow-x: hidden;
