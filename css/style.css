@@ -216,7 +216,7 @@ img {
 .intro-image {
   -o-object-fit: cover;
      object-fit: cover;
-  max-width: 30rem;
+  max-width: clamp(25rem, 43.5625vw, 30rem);
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.13);
 }
 .intro-buttons {
@@ -596,13 +596,13 @@ img {
   display: none;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 921px) {
   .intro-image {
     content: url("../images/intro.png");
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 920px) {
   .intro {
     position: relative;
     overflow: hidden;
