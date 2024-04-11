@@ -768,9 +768,4 @@ img {
     margin-bottom: 1.1111rem;
   }
 }
-@media (max-width: 360px) {
-  #intro-text-span{
-    content: "Викомп"
-  }
-}
 /*# sourceMappingURL=style.css.map */
