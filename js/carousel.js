@@ -34,9 +34,6 @@ $(document).ready(function(){
     // Флаг блокировки кнопок во время анимации
     var isAnimating = false;
 
-    // Скорость пролистывания
-    var velocity = 0;
-
     // Обновление ширины элемента карусели
     updateItemWidth();
     updateLimits();
@@ -55,51 +52,21 @@ $(document).ready(function(){
         $('#next').show();
     }
 
-    // // Начало перетаскивания элементов карусели
-    // $('.vacancies-cards').on('mousedown touchstart', function(event) {
-    //     isDragging = true;
-    //     startDraggingX = event.clientX || event.originalEvent.touches[0].clientX;
-    //     startPosition = parseInt($('.vacancies-cards').css('marginLeft')) || 0;
-    // });
-
-    // // Перемещение элементов карусели
-    // $(document).on('mousemove touchmove', function(event) {
-    //     if (isDragging) {
-    //         var distance = (event.clientX || event.originalEvent.touches[0].clientX) - startDraggingX;
-    //         var newPosition = startPosition + distance;
-    //         newPosition = Math.min(maxPosition, Math.max(minPosition, newPosition));
-    //         $('.vacancies-cards').css('marginLeft', newPosition);
-    //         currentPosition = Math.round(-newPosition / itemWidth);
-    //         updateButtons();
-    //     }
-    // });
-
-    // Обработчик события touchstart
-    $('.vacancies-cards').on('touchstart', function(event) {
+    // Начало перетаскивания элементов карусели
+    $('.vacancies-cards').on('mousedown touchstart', function(event) {
         isDragging = true;
-        var touch = event.originalEvent.touches[0];
-        startDraggingX = touch.clientX;
+        startDraggingX = event.clientX || event.originalEvent.touches[0].clientX;
         startPosition = parseInt($('.vacancies-cards').css('marginLeft')) || 0;
-        
-        // Сбрасываем скорость
-        velocity = 0;
     });
 
-    // Обработчик события touchmove
-    $(document).on('touchmove', function(event) {
+    // Перемещение элементов карусели
+    $(document).on('mousemove touchmove', function(event) {
         if (isDragging) {
-            var touch = event.originalEvent.touches[0];
-            var currentX = touch.clientX;
-            var distance = currentX - startDraggingX;
+            var distance = (event.clientX || event.originalEvent.touches[0].clientX) - startDraggingX;
             var newPosition = startPosition + distance;
-            
             newPosition = Math.min(maxPosition, Math.max(minPosition, newPosition));
             $('.vacancies-cards').css('marginLeft', newPosition);
-            
-            // Обновление текущей позиции и скорости пролистывания
             currentPosition = Math.round(-newPosition / itemWidth);
-            velocity = distance;  // Скорость равна расстоянию, пройденному за это событие touchmove
-            
             updateButtons();
         }
     });
@@ -108,37 +75,7 @@ $(document).ready(function(){
     $(document).on('mouseup touchend', function() {
         isDragging = false;
 
-        // Применение инерции после завершения перетаскивания
-        applyInertia();
     });
-
-    // Функция для применения инерции
-    function applyInertia() {
-        if (!isDragging && Math.abs(velocity) > 1) {
-            var currentMarginLeft = parseInt($('.vacancies-cards').css('marginLeft'));
-            var newMarginLeft = currentMarginLeft + velocity;
-            
-            // Ограничиваем новое положение в пределах допустимых значений
-            newMarginLeft = Math.min(maxPosition, Math.max(minPosition, newMarginLeft));
-            
-            // Плавно анимируем движение к новой позиции
-            $('.vacancies-cards').animate({
-                marginLeft: newMarginLeft
-            }, {
-                duration: Math.abs(velocity) * 100, // Длительность анимации зависит от скорости
-                easing: 'easeOutCubic',
-                complete: function() {
-                    velocity = 0;  // Сбрасываем скорость после окончания анимации
-                }
-            });
-
-            // Постепенное замедление
-            velocity *= 0.95;
-
-            // Повторно вызываем функцию для плавного замедления
-            setTimeout(applyInertia, 16);
-        }
-    }
 
     // Обновление состояния кнопок при загрузке страницы
     updateButtons();
