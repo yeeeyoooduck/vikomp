@@ -606,7 +606,7 @@ img {
     position: absolute;
     right: 0;
     box-shadow: none;
-    content: url("/images/intro-tablets.png");
+    content: url("images/intro-tablets.png");
     overflow: visible;
     border-radius: 0px;
   }
