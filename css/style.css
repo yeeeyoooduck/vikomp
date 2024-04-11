@@ -596,6 +596,12 @@ img {
   display: none;
 }
 
+@media (min-width: 1025px) {
+  .intro-image {
+    content: url("../images/intro.png");
+  }
+}
+
 @media (max-width: 1024px) {
   .intro {
     position: relative;
@@ -606,7 +612,7 @@ img {
     position: absolute;
     right: 0;
     box-shadow: none;
-    content: url("images/intro-tablets.png");
+    content: url("../images/intro-tablets.png");
     overflow: visible;
     border-radius: 0px;
   }
