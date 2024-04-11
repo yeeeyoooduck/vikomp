@@ -1,0 +1,35 @@
+/* Подключение Light */
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Light.ttf') format('truetype');
+    font-weight: 300; /* Указываем вес шрифта для Light */
+}
+
+/* Подключение Regular */
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Regular.ttf') format('truetype');
+    font-weight: 400; /* Указываем вес шрифта для Regular */
+}
+
+/* Подключение Medium */
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Medium.ttf') format('truetype');
+    font-weight: 500; /* Указываем вес шрифта для Medium */
+}
+
+/* Подключение Bold */
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Bold.ttf') format('truetype');
+    font-weight: 700; /* Указываем вес шрифта для Bold */
+}
+
+/* Подключение Heavy */
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Heavy.ttf') format('truetype');
+    font-weight: 900; /* Указываем вес шрифта для Heavy */
+}
+
